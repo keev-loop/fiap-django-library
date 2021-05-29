@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+			<div class="navbar navbar-expand-lg navbar-light bg-light">
+				{% include 'partials/_cabecalho.html' %}
+			</div>
+			<main class="container">
+					{% include 'partials/_busca.html' %}
+					<section class="col-12">
+					   <div class="d-flex flex-row">
+						   {% if livro.capa == '' %}
+							<img src="{% static 'img/book.png'%}" class="img-fluid img-thumbnail rounded" style="height: 250px"/>
+						   {% else %}
+							<img src="{{ livro.capa.url }}" class="img-fluid img-thumbnail rounded" style="height: 250px"/>
+						   {% endif %}
+						  <div class="flex-column ml-4">
+							 <h1>{{ livro.titulo }}</h1>
+							 <h2>{{ livro.autor.nome }}</h2>
+						  </div>
+					   </div>
+					   <div class="d-flex flex-row">
+						  <p class="col-8">{{ livro.descricao }}</p>
+						  <ul class="list-group ml-3 col-4">
+							 <li class="list-group-item">{{ livro.paginas }} página{{ livro.paginas|pluralize:'s' }}</li>
+							 <li class="list-group-item">Editora: {{ livro.editora }}</li>
+							 <li class="list-group-item">Edição: {{ livro.edicao }}</li>
+							 <li class="list-group-item">Ano da publicação: {{ livro.ano_publicacao }}</li>
+							 <li class="list-group-item">Idioma: {{ livro.idioma }}</li>
+							 <li class="list-group-item">ISBN: {{ livro.isbn }}	</li>
+						  </ul>
+					   </div>
+					</section>
+				</main>
+{% endblock %}

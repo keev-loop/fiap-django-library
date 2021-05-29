@@ -1,0 +1,17 @@
+<form class="from-inline" action="{% url 'busca' %}">
+    <div class="input-group mt-5 mb-5 col-12">
+        <input
+                name="titulo"
+                type="text"
+                class="form-control"
+                placeholder="Busque pelo nome do livro . . ."
+        />
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <a class="text-dark" href="#" onclick="document.querySelector('form').submit()">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

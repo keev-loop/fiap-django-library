@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<div class="navbar navbar-expand-lg navbar-light bg-light">
+	{% include 'partials/_cabecalho.html' %}
+</div>
+<main class="container">
+	{% include 'partials/_busca.html' %}
+	<div class="col-12 d-flex flex-row flex-wrap justify-content-center">
+		{% for livro in livros %}
+			<div class="card mr-4 mb-3" style="width: 18rem">
+				<a href="/livro/{{ livro.id }}">
+					{% if livro.capa == '' %}
+						<img src="{% static 'img/book.png' %}" class="card-img-top"/>
+					{% else %}
+						<img src="{{ livro.capa.url }}" class="card-img-top"/>
+					{% endif %}
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">{{ livro.titulo }}</h5>
+					<p class="card-text">{{ livro.descricao|slice:':150'|add:'...' }}</p>
+					<a href="/livro/{{ livro.id }}" class="card-link">Detalhes</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</main>
+{% endblock %}
